@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
                 @Index(name = "idx_user_addresses_default", columnList = "user_id,is_default")
         }
 )
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
