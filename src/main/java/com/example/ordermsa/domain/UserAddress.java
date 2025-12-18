@@ -29,7 +29,7 @@ public class UserAddress {
     private User user;
 
     @Column(length = 50)
-    private String alias;  // 집, 회사 등
+    private String alias;
 
     @Column(name = "recipient_name", nullable = false, length = 100)
     private String recipientName;
