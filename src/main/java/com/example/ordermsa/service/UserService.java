@@ -7,6 +7,7 @@ import com.example.ordermsa.domain.UserStatus;
 import com.example.ordermsa.domain.repository.UserRepository;
 import com.example.ordermsa.role.Role;
 import com.example.ordermsa.role.RoleRepository;
+import com.example.ordermsa.config.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,12 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     public UserSignUpResponse signUp(UserSignUpRequest userSignUpRequest) {
@@ -59,4 +62,6 @@ public class UserService {
                 .createdAt(saved.getCreatedAt())
                 .build();
     }
+
+
 }
